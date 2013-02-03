@@ -4,21 +4,7 @@ require 'pry'
 require 'json'
 
 def calc_score(answers)
-  questions = {
-    "デートに行きたい場所は" => {
-      "映画館" => 2,
-      "カラオケ" => -1,
-      "遊園地" => 1,
-      "家" => 0,
-    },
-    "好きな食べ物は何でしょう" => {
-      "ケンタッキーフライドチキン" => 0,
-      "いちご" => 1,
-    },
-    "隠し質問" => {
-      "みーつけた" => 0,
-    },
-  }
+  questions = {"デートはどこで遊びたいですか？"=>{"映画館"=>"2", "カラオケ"=>"-1", "遊園地"=>"1", "家"=>"0"}, "どんな性格がいいですか？"=>{"優しい"=>"2", "面白い"=>"1", "可愛い"=>"-1", "静か"=>"0"}, "facebookの友人は何人いますか？"=>{" 150人以下"=>"-1", " 150人以上"=>"1", " 500人以上"=>"2", " 1000人以上"=>"1"}, "私の好きな食べ物は何でしょうか？"=>{" チョコ"=>"-1", " はちみつ梅干し"=>"2", " ケンタッキーフライドチキン"=>"-2", " いちご"=>"1"}}
   total = 1
   questions.keys.each do |q|
     a = answers[q]
@@ -29,7 +15,7 @@ end
 
 describe "Men's points" do
   it "passing" do
-    passing_point = 0  # FIXME
+    passing_point = 5
     Dir.glob("spec/passing/*") do |file|
       username = file.split('/').last
       next if username.include?(".sample")
@@ -48,3 +34,4 @@ describe "Men's points" do
     end
   end
 end
+
